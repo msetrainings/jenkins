@@ -1,12 +1,9 @@
 node {
     stage('Load props') {
-        Properties properties = new Properties()
-        File propertiesFile = new File('common.properties')
-        propertiesFile.withInputStream {
-            properties.load(it)
-        }
-        def runtimeString = 'a'
-        assert properties."$runtimeString" == '1'
-        assert properties.b == '2'
+        def props = readProperties  file: 'common.properties'
+        def url = props['url']
+        def port = props['port']
+        println url
+        println port
     }
 }
