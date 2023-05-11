@@ -1,9 +1,12 @@
 node {
-    stage('Example') {
-        if (env.BRANCH_NAME == 'master') {
-            echo 'I only execute on the master branch'
-        } else {
-            echo 'I execute elsewhere'
+    stage('Load props') {
+        Properties properties = new Properties()
+        File propertiesFile = new File('common.properties')
+        propertiesFile.withInputStream {
+            properties.load(it)
         }
+        def runtimeString = 'a'
+        assert properties."$runtimeString" == '1'
+        assert properties.b == '2'
     }
 }
