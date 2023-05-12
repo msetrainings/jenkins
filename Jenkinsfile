@@ -8,7 +8,8 @@ def runScript(scriptName){
 node {
     stage('Run script') {
         checkout scm
-        def files = runScript('${WORKSPACE}/script.sh')
+        sh "chmod +x ${WORKSPACE}/script.sh"
+        def files = sh(returnStdout: true, script: '${scriptName}')
         println "files: $files"
     }
 }
