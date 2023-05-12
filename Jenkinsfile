@@ -5,8 +5,7 @@ def prepare(){
 node {
     stage('Run script') {
         checkout scm
-        sh "chmod +x ${WORKSPACE}/*.sh"
-        def files = sh(returnStdout: true, script: '${WORKSPACE}/script.sh')
-        println "files: $files"
+        def hello = sh(returnStdout: true, script: 'python ${WORKSPACE}/script.py')
+        println "message: $hello"
     }
 }
