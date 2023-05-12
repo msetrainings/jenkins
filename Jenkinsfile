@@ -5,7 +5,7 @@ def prepare(){
 node {
     stage('Run script') {
         checkout scm
-        def hello = sh(returnStdout: true, script: '/usr/bin/python3 ${WORKSPACE}/script.py')
+        def hello = sh(returnStdout: true, script: 'python3 ${WORKSPACE}/script.py')
         println "message: $hello"
     }
 }
