@@ -1,6 +1,7 @@
 node {
     stage('Run script') {
         checkout scm 
-        readFile('script.sh')
+        def script = readFile('script.sh')
+        script.execute()
     }
 }
