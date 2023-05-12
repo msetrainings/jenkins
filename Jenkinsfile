@@ -8,6 +8,6 @@ node {
     stage('Run script') {
         checkout scm
         def files = runScript('${WORKSPACE}/script.sh')
-        println files
+        println "files: $files"
     }
 }
