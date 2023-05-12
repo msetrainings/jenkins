@@ -1,5 +1,5 @@
 def runScript(scriptName){
-    sh "chmod +x ${WORKSPACE}/script.sh"
+    sh "chmod +x ${WORKSPACE}/$scriptName"
     def files = sh(returnStdout: true, script: '${WORKSPACE}/$scriptName')
     println result
     return result
